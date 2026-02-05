@@ -1,0 +1,21 @@
+{
+  "twitter": {
+    "username": "your_twitter_username"
+  },
+  "rss_feeds": [
+    {
+      "name": "Hacker News",
+      "url": "https://hnrss.org/frontpage"
+    },
+    {
+      "name": "TechCrunch",
+      "url": "https://techcrunch.com/feed/"
+    }
+  ],
+  "data_dir": "~/.x-agent",
+  "style_preferences": {
+    "tone": "casual",
+    "emoji_usage": "moderate",
+    "hashtag_count": "1-2"
+  }
+}
