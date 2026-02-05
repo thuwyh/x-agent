@@ -19,7 +19,7 @@ Record the following idea: `$ARGUMENTS`
    - Calculate the ISO week number (format: YYYY-WXX)
 
 2. **Determine File Path**
-   - Ideas are stored in: `~/.x-agent/ideas/`
+   - Ideas are stored in: `./data/ideas/`
    - File name format: `YYYY-WXX.md` (e.g., `2025-W05.md`)
 
 3. **Read or Create File**
@@ -47,7 +47,7 @@ Record the following idea: `$ARGUMENTS`
 ## Example Output
 
 ```
-Recorded idea to ~/.x-agent/ideas/2025-W05.md
+Recorded idea to ./data/ideas/2025-W05.md
 
 ## [2025-01-30 14:32]
 

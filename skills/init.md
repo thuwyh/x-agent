@@ -12,7 +12,7 @@ Fetch a Twitter user's info and tweets, build a persona profile for future post 
 
 Twitter username: `$ARGUMENTS`
 
-If no username provided, check `~/.x-agent/config.json` for `twitter.username`.
+If no username provided, check `./data/config.json` for `twitter.username`.
 
 ## Instructions
 
@@ -55,15 +55,15 @@ Paginate up to 3 pages (target ~60 tweets). For each subsequent page, pass the `
 
 #### Parsing Search Results
 
-The MCP response may be very large and get saved to a temporary file. If that happens, use a **subagent** (Task tool with `general-purpose` type) to read and extract the data from that file.
-
-The response is a JSON array with one element:
+The MCP response may be very large and get saved to a temporary file. If that happens, run the parsing script:
 
 ```
-[{ "type": "text", "text": "<JSON string>" }]
+node ./scripts/parse-tweets.js /path/to/temp-file.json
 ```
 
-Parse the inner JSON string. Its structure:
+This outputs `{ "cursor": "...", "tweets": [...] }` with all fields pre-extracted. Use the `cursor` value for pagination.
+
+The raw response structure (for reference):
 
 ```json
 {
@@ -144,9 +144,9 @@ For each tweet, extract into a structured record:
 
 ### Step 3: Save Raw Tweets
 
-Create directory `~/.x-agent/tweets/` if it doesn't exist.
+Create directory `./data/tweets/` if it doesn't exist.
 
-Save to `~/.x-agent/tweets/[username]-YYYY-MM-DD.md`:
+Save to `./data/tweets/[username]-YYYY-MM-DD.md`:
 
 ```markdown
 # Tweets Archive - @username
@@ -212,7 +212,7 @@ Study these dimensions:
 
 ### Step 5: Save Profile
 
-Save to `~/.x-agent/profile.md`:
+Save to `./data/profile.md`:
 
 ```markdown
 # User Profile - @username
@@ -295,7 +295,7 @@ Based on the analysis, when generating content as this user:
 
 ### Step 6: Update Config
 
-Update `~/.x-agent/config.json`:
+Update `./data/config.json`:
 - Set `twitter.username` to the initialized username
 - Set `twitter.rest_id` to the user's rest_id
 
@@ -319,9 +319,9 @@ Style:
 [Key style traits, 2-3 bullet points]
 
 Files saved:
-- ~/.x-agent/profile.md (persona & style guide)
-- ~/.x-agent/tweets/[username]-YYYY-MM-DD.md (raw tweets)
-- ~/.x-agent/config.json (updated)
+- ./data/profile.md (persona & style guide)
+- ./data/tweets/[username]-YYYY-MM-DD.md (raw tweets)
+- ./data/config.json (updated)
 
 Run /twitter to generate posts matching this profile.
 ```

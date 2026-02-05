@@ -26,7 +26,7 @@ The user may have configured:
 - Use it as the main theme
 
 **If no topic:**
-- Check `~/.x-agent/ideas/` for recent ideas
+- Check `./data/ideas/` for recent ideas
 - Fetch Twitter trends
 - Fetch RSS feeds for inspiration
 - Let user choose or suggest
@@ -36,22 +36,22 @@ The user may have configured:
 1. **Fetch user's recent tweets** (Twitter API)
    - Get last 20-50 tweets
    - Analyze: tone, emoji, hashtags, sentence structure, hooks
-   - Save to `~/.x-agent/research/YYYY-MM-DD-style.md`
+   - Save to `./data/research/YYYY-MM-DD-style.md`
 
 2. **Fetch RSS feeds** (if configured)
    - Pull recent articles from user's feeds
    - Extract relevant content for the topic
-   - Save to `~/.x-agent/research/YYYY-MM-DD-rss.md`
+   - Save to `./data/research/YYYY-MM-DD-rss.md`
 
 3. **Search related tweets** (Twitter API)
    - Find popular tweets on the topic
    - Note what works: hooks, formats, angles
-   - Save to `~/.x-agent/research/YYYY-MM-DD-[topic].md`
+   - Save to `./data/research/YYYY-MM-DD-[topic].md`
 
 4. **Check trends** (Twitter API)
    - Current trending topics
    - Relevance to user's topic
-   - Save to `~/.x-agent/research/YYYY-MM-DD-trends.md`
+   - Save to `./data/research/YYYY-MM-DD-trends.md`
 
 ### Step 3: Generate Posts
 
@@ -93,7 +93,7 @@ Characters: XXX/500
 
 ### Step 5: Save
 
-Append to `~/.x-agent/posts/YYYY-MM-DD.md`:
+Append to `./data/posts/YYYY-MM-DD.md`:
 
 ```markdown
 ## [HH:MM] Topic: [topic]
@@ -113,7 +113,7 @@ Append to `~/.x-agent/posts/YYYY-MM-DD.md`:
 
 ## Data Persistence
 
-All fetched data saved to `~/.x-agent/research/`:
+All fetched data saved to `./data/research/`:
 - `YYYY-MM-DD-style.md` - User style analysis
 - `YYYY-MM-DD-rss.md` - RSS feed content
 - `YYYY-MM-DD-[topic].md` - Topic research
