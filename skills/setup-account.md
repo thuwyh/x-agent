@@ -1,6 +1,6 @@
 ---
-name: init
-description: Initialize user profile by analyzing Twitter history. Usage: /init "username"
+name: setup-account
+description: Initialize user profile by analyzing Twitter history. Usage: /setup-account "username"
 user-invocable: true
 ---
 

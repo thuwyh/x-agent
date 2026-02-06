@@ -24,7 +24,7 @@ The user may have configured:
 
 1. Read `./data/config.json` → extract the `active` username and its `rest_id` from `accounts[active]`
 2. Read `./data/<active>/profile.md` → extract persona, style rules, and content themes
-3. If either file is missing, tell the user to run `/init "username"` first and stop.
+3. If either file is missing, tell the user to run `/setup-account "username"` first and stop.
 
 ### Step 1: Gather Topic
 

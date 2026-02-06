@@ -16,7 +16,7 @@ Record the following idea: `$ARGUMENTS`
 
 0. **Load Configuration**
    - Read `./data/config.json` → extract the `active` username
-   - If config is missing or no active account, tell the user to run `/init "username"` first and stop.
+   - If config is missing or no active account, tell the user to run `/setup-account "username"` first and stop.
 
 1. **Get Current Time**
    - Get the current date and time

@@ -28,7 +28,7 @@ Determine mode from arguments:
 2. Read `./data/<active>/profile.md` → extract:
    - Top 5 content themes from the "Content Themes" section
    - Persona summary and style rules for voice matching
-3. If either file is missing, tell the user to run `/init "username"` first and stop.
+3. If either file is missing, tell the user to run `/setup-account "username"` first and stop.
 
 ### Step 1: Get Following Sample (Auto mode & Topic mode only)
 
@@ -59,7 +59,7 @@ Skip this step in User mode.
 
 ### Step 2: Search Tweets
 
-Use **Search_Twitter** for all searches. The response parsing follows the same structure as `skills/init.md` Step 2.
+Use **Search_Twitter** for all searches. The response parsing follows the same structure as `skills/setup-account.md` Step 2.
 
 **IMPORTANT:** MCP responses may be very large and get saved to a temporary file. When this happens, run the parsing script to extract structured data:
 

@@ -22,7 +22,7 @@ If no username provided, read `./data/config.json` and list all available accoun
 
 Check if `./data/<username>/profile.md` exists.
 
-- If **not found**: tell the user this account hasn't been initialized yet and suggest running `/init "<username>"` first. Stop.
+- If **not found**: tell the user this account hasn't been initialized yet and suggest running `/setup-account "<username>"` first. Stop.
 - If **found**: continue to Step 3.
 
 ### Step 3: Update Config
