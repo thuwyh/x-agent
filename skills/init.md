@@ -12,7 +12,7 @@ Fetch a Twitter user's info and tweets, build a persona profile for future post 
 
 Twitter username: `$ARGUMENTS`
 
-If no username provided, check `./data/config.json` for `twitter.username`.
+If no username provided, check `./data/config.json` for the `active` account username.
 
 ## Instructions
 
@@ -144,9 +144,9 @@ For each tweet, extract into a structured record:
 
 ### Step 3: Save Raw Tweets
 
-Create directory `./data/tweets/` if it doesn't exist.
+Create directory `./data/<username>/tweets/` if it doesn't exist.
 
-Save to `./data/tweets/[username]-YYYY-MM-DD.md`:
+Save to `./data/<username>/tweets/[username]-YYYY-MM-DD.md`:
 
 ```markdown
 # Tweets Archive - @username
@@ -212,7 +212,7 @@ Study these dimensions:
 
 ### Step 5: Save Profile
 
-Save to `./data/profile.md`:
+Save to `./data/<username>/profile.md`:
 
 ```markdown
 # User Profile - @username
@@ -295,11 +295,22 @@ Based on the analysis, when generating content as this user:
 
 ### Step 6: Update Config
 
-Update `./data/config.json`:
-- Set `twitter.username` to the initialized username
-- Set `twitter.rest_id` to the user's rest_id
+Update `./data/config.json` with the multi-account format:
 
-If the file doesn't exist, create it with these values.
+```json
+{
+  "active": "<username>",
+  "accounts": {
+    "<username>": { "rest_id": "<rest_id>" }
+  },
+  "rss_feeds": [],
+  "data_dir": "./data"
+}
+```
+
+- If the file doesn't exist, create it with the structure above.
+- If the file exists in the **old format** (has `twitter.username` / `twitter.rest_id`), migrate it: move the old account into the `accounts` map, remove the `twitter` key, and set `active` to the current username.
+- If the file exists in the **new format**, add/update the account entry in `accounts` and set `active` to this username. Preserve existing accounts and other fields (`rss_feeds`, etc.).
 
 ### Step 7: Confirm to User
 
@@ -319,9 +330,9 @@ Style:
 [Key style traits, 2-3 bullet points]
 
 Files saved:
-- ./data/profile.md (persona & style guide)
-- ./data/tweets/[username]-YYYY-MM-DD.md (raw tweets)
-- ./data/config.json (updated)
+- ./data/<username>/profile.md (persona & style guide)
+- ./data/<username>/tweets/[username]-YYYY-MM-DD.md (raw tweets)
+- ./data/config.json (updated, active account set to @username)
 
 Run /twitter to generate posts matching this profile.
 ```

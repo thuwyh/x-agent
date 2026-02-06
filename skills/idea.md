@@ -14,12 +14,16 @@ Record the following idea: `$ARGUMENTS`
 
 ## Instructions
 
+0. **Load Configuration**
+   - Read `./data/config.json` → extract the `active` username
+   - If config is missing or no active account, tell the user to run `/init "username"` first and stop.
+
 1. **Get Current Time**
    - Get the current date and time
    - Calculate the ISO week number (format: YYYY-WXX)
 
 2. **Determine File Path**
-   - Ideas are stored in: `./data/ideas/`
+   - Ideas are stored in: `./data/<active>/ideas/`
    - File name format: `YYYY-WXX.md` (e.g., `2025-W05.md`)
 
 3. **Read or Create File**
@@ -47,7 +51,7 @@ Record the following idea: `$ARGUMENTS`
 ## Example Output
 
 ```
-Recorded idea to ./data/ideas/2025-W05.md
+Recorded idea to ./data/<active>/ideas/2025-W05.md
 
 ## [2025-01-30 14:32]
 

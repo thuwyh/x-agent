@@ -24,8 +24,8 @@ Determine mode from arguments:
 
 ### Step 0: Load Configuration
 
-1. Read `./data/config.json` → extract `twitter.username` (the authenticated user)
-2. Read `./data/profile.md` → extract:
+1. Read `./data/config.json` → extract the `active` username and its `rest_id` from `accounts[active]`
+2. Read `./data/<active>/profile.md` → extract:
    - Top 5 content themes from the "Content Themes" section
    - Persona summary and style rules for voice matching
 3. If either file is missing, tell the user to run `/init "username"` first and stop.
@@ -55,7 +55,7 @@ Skip this step in User mode.
 
 5. Store these as `relevant_followings` (list of screen_names).
 
-**Fallback:** If `Get_User_Following_IDs` fails, use **Get_User_Followings** with `user` = rest_id from config, `count` = 20.
+**Fallback:** If `Get_User_Following_IDs` fails, use **Get_User_Followings** with `user` = rest_id from `accounts[active]` in config, `count` = 20.
 
 ### Step 2: Search Tweets
 
@@ -185,7 +185,7 @@ For each selected tweet, generate a comment using one of 6 types. Rotate types a
    - Default to English for other languages
 5. **No emoji, no hashtags** in comments.
 6. **Specific to the tweet**: 必须引用推文中的具体内容，不能套用到任何推文的模板。
-7. **Match persona voice**: Use the style and expertise areas from `./data/profile.md` to inform the perspective, but don't be formulaic about it.
+7. **Match persona voice**: Use the style and expertise areas from `./data/<active>/profile.md` to inform the perspective, but don't be formulaic about it.
 8. **消除 AI 痕迹 — 这条规则的优先级最高，必须严格遵守：**
 
    **禁止使用的标点和格式：**
@@ -256,13 +256,13 @@ Today's progress: 15/50
 ───────────────────
 ```
 
-The "Today's progress" count should include comments from earlier batches today. Read `./data/comments/YYYY-MM-DD.md` to count existing comments if the file exists.
+The "Today's progress" count should include comments from earlier batches today. Read `./data/<active>/comments/YYYY-MM-DD.md` to count existing comments if the file exists.
 
 ### Step 6: Save to File
 
-Create directory `./data/comments/` if it doesn't exist.
+Create directory `./data/<active>/comments/` if it doesn't exist.
 
-**Append** to `./data/comments/YYYY-MM-DD.md`.
+**Append** to `./data/<active>/comments/YYYY-MM-DD.md`.
 
 Determine the batch number:
 - If the file doesn't exist, this is Batch 1
