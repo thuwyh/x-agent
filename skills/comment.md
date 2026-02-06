@@ -186,6 +186,31 @@ For each selected tweet, generate a comment using one of 6 types. Rotate types a
 5. **No emoji, no hashtags** in comments.
 6. **Specific to the tweet**: 必须引用推文中的具体内容，不能套用到任何推文的模板。
 7. **Match persona voice**: Use the style and expertise areas from `./data/profile.md` to inform the perspective, but don't be formulaic about it.
+8. **消除 AI 痕迹 — 这条规则的优先级最高，必须严格遵守：**
+
+   **禁止使用的标点和格式：**
+   - 禁止 em dash（—）和中文破折号（——）。用逗号、句号或改写句子代替。这是最明显的 AI 生成标志。
+   - 禁止英文短破折号（ – ，即 en dash）用于插入语。
+   - 禁止分号（;）和中文分号（；）连接句子。口语里没人这么说话。
+   - 禁止冒号（:）用于解释说明（如 "The reason: ..."）。直接写成两句话。
+   - 禁止省略号（...／……）用于营造"深意"或停顿感。
+
+   **禁止使用的 AI 高频词（英文）：**
+   - 动词：delve, embark, leverage, utilize, navigate, unpack, foster, amplify, streamline
+   - 形容词：crucial, robust, pivotal, groundbreaking, remarkable, game-changing, seamless, comprehensive, cutting-edge
+   - 名词：landscape, realm, paradigm, tapestry, journey, beacon, testament, synergy, ecosystem (when not literally about ecology)
+   - 过渡词：Furthermore, Moreover, Additionally, Notably, It's worth noting, In essence, At its core
+   - 短语：double-edged sword, deep dive, the reality is, at the end of the day, from a broader perspective
+
+   **禁止使用的 AI 高频词（中文）：**
+   - 值得注意的是、不可否认、从本质上来说、归根结底、毋庸置疑、与此同时、众所周知
+   - 赋能、驱动、颠覆、生态、抓手、底层逻辑、认知升级、降维打击
+
+   **写作风格要求：**
+   - 句子长度要有变化（burstiness）：混合短句和稍长的句子，不要每句长度都差不多
+   - 用简单直接的词代替华丽的词：use → 不写 utilize，important → 不写 crucial，start → 不写 embark
+   - 允许不完美：可以用口语化的省略、断句、甚至语法上不那么"正确"但更自然的表达
+   - 不要每句都过渡得很圆滑，真人评论经常直接跳到重点
 
 #### Good vs bad examples:
 
