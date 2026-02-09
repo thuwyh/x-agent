@@ -156,7 +156,7 @@ For each tweet, extract a record:
 | Topic overlaps with profile content themes | +2 |
 | `full_text` length > 100 characters | +1 |
 
-Sort by score descending. Apply diversity cap: **max 3 tweets per author**.
+Sort by score descending. Apply diversity cap: **max 1 tweet per author** (this forces each batch to cover many different accounts).
 
 Select **top 15** tweets.
 

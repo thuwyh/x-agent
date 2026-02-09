@@ -48,15 +48,17 @@ for (const entry of entries) {
   if (!result?.legacy) continue;
 
   const legacy = result.legacy;
-  const userLegacy = result.core?.user_results?.result?.legacy || {};
+  const userResult = result.core?.user_results?.result || {};
+  const userLegacy = userResult.legacy || {};
+  const userCore = userResult.core || {};
 
   const mediaArr =
     legacy.extended_entities?.media || legacy.entities?.media || [];
 
   tweets.push({
     tweet_id: result.rest_id || entry.entryId?.replace('tweet-', ''),
-    author_username: userLegacy.screen_name || '',
-    author_name: userLegacy.name || '',
+    author_username: userCore.screen_name || userLegacy.screen_name || '',
+    author_name: userCore.name || userLegacy.name || '',
     full_text: legacy.full_text || '',
     created_at: legacy.created_at || '',
     favorite_count: legacy.favorite_count ?? 0,
