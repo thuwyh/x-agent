@@ -1,6 +1,6 @@
 ---
 name: comment
-description: Find tweets worth commenting on and generate value-adding comments. Usage: /comment, /comment "topic", or /comment "@username"
+description: Find tweets worth commenting on and generate value-adding comments. Usage: /comment, /comment "topic", /comment "@username", /comment "list", or /comment "list:ID"
 user-invocable: true
 ---
 
@@ -18,6 +18,7 @@ Determine mode from arguments:
 
 - **No arguments** → **Auto mode**: discover tweets from followed accounts + profile topics
 - **Starts with `@`** (e.g., `@karpathy`) → **User mode**: find tweets from a specific user
+- **`list` or `list:ID`** (e.g., `list` or `list:1585430245762441216`) → **List mode**: fetch tweets from Twitter List timeline(s)
 - **Otherwise** → **Topic mode**: search tweets by topic keyword
 
 ## Instructions
@@ -32,7 +33,7 @@ Determine mode from arguments:
 
 ### Step 1: Get Following Sample (Auto mode & Topic mode only)
 
-Skip this step in User mode.
+Skip this step in User mode and List mode.
 
 1. Call **Get_User_Following_IDs** with:
    - `username`: the authenticated user's username (from config)
@@ -122,6 +123,19 @@ Run all searches in parallel. Parse any temp files with `node ./scripts/parse-tw
 - `type`: `Latest`
 - `count`: `20`
 - Paginate: 2 pages (~40 tweets)
+
+#### List mode searches:
+
+1. Determine list IDs:
+   - If argument is `list`: read `accounts[active].lists` from `./data/config.json`. If the `lists` field is empty or missing, tell the user to add list IDs to config and stop.
+   - If argument is `list:ID` (e.g., `list:1585430245762441216`): use the provided ID.
+
+2. For each list ID, call **Get_List_Timeline** with:
+   - `listId`: the list ID
+
+3. Response will be large — parse with: `node ./scripts/parse-tweets.js <temp-file>`
+
+4. Run all list timeline fetches in parallel if multiple lists.
 
 ### Step 3: Filter & Rank
 

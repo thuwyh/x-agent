@@ -34,7 +34,7 @@ data/            → Runtime data directory (git-ignored)
 | `/setup-account "username"` | `skills/setup-account.md` | Fetch Twitter user info + tweets → build persona profile → save to `./data/<username>/profile.md` and `./data/<username>/tweets/` |
 | `/idea "text"` | `skills/idea.md` | Append a timestamped idea to `./data/<active>/ideas/YYYY-WXX.md` |
 | `/twitter "topic"` | `skills/twitter.md` | Research topic → match user style from profile → generate X + Threads posts → save to `./data/<active>/posts/` |
-| `/comment`, `/comment "topic"`, `/comment "@user"` | `skills/comment.md` | Find tweets worth commenting on → generate altruistic comments → save to `./data/<active>/comments/YYYY-MM-DD.md` |
+| `/comment`, `/comment "topic"`, `/comment "@user"`, `/comment "list"`, `/comment "list:ID"` | `skills/comment.md` | Find tweets worth commenting on → generate altruistic comments → save to `./data/<active>/comments/YYYY-MM-DD.md`. List mode fetches tweets from Twitter List timelines. |
 | `/switch "username"` | `skills/switch.md` | Switch the active account for multi-account support |
 
 ## Key Design Decisions
@@ -68,6 +68,7 @@ user-invocable: true
 - Following IDs: `Get_User_Following_IDs` → returns up to 5000 IDs by username
 - Bulk user lookup: `Get_Users_By_IDs` → returns profiles for comma-separated rest_ids
 - Following list (fallback): `Get_User_Followings` → returns following with full profiles by rest_id
+- List timeline: `Get_List_Timeline` → returns recent tweets from all members of a Twitter List (response format compatible with `parse-tweets.js`)
 
 ### Handling large MCP responses
 
